@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/parking_view_title_bar" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/parking_vertical_margin"
+        android:gravity="center_vertical"
+        android:text="@string/parking_locations"
+        android:textColor="@android:color/black"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/parking_horizontal_margin"
+        android:layout_marginBottom="@dimen/parking_vertical_margin"
+        android:gravity="center_vertical"
+        android:text="@string/parking_near_me"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/parking_fragment_parkings_no_park_view"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#E6F0FC"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/parking_horizontal_margin"
+        android:paddingEnd="@dimen/parking_horizontal_margin">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:background="#ff0000" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/parking_horizontal_margin"
+            android:layout_marginEnd="@dimen/parking_horizontal_margin"
+            android:layout_weight="1"
+            android:gravity="center_vertical|start"
+            android:text="@string/parking_no_parking_found"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/parking_fragment_parkings_refresh_btn"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/parking_bg_refresh"
+            android:text="@string/parking_refresh"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/parking_fragment_parkings_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/parking_item_park" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/parking_vertical_margin"
+        android:gravity="center_vertical"
+        android:text="@string/parking_councils"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/parking_fragment_councils_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/parking_item_park" />
+
+    </RelativeLayout>
+
+</LinearLayout>

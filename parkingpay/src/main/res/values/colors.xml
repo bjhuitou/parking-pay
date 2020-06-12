@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="parking_theme_color">#0B0F70</color>
+    <!--Divide-->
+    <color name="parking_divide_color">#E6E6E6</color>
+    <!--Dialog-->
+    <color name="parking_dialog_bg_color">#FFFFFF</color>
+    <!--TitleBar-->
+    <color name="parking_title_bar_bg_color">@color/parking_theme_color</color>
+    <color name="parking_title_bar_text_color">#FFFFFF</color>
+    <color name="parking_title_bar_action_color">#FFFFFF</color>
+</resources>

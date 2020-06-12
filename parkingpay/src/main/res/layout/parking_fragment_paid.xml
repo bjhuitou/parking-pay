@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/parking_view_title_bar" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/parking_horizontal_margin"
+        android:layout_marginTop="@dimen/parking_vertical_margin"
+        android:layout_marginEnd="@dimen/parking_horizontal_margin"
+        android:background="@drawable/parking_bg_paid_top"
+        android:drawableTop="@mipmap/parking_ic_paid_success"
+        android:gravity="center_horizontal"
+        android:paddingTop="8dp"
+        android:text="Paid"
+        android:textColor="@android:color/white"
+        android:textSize="40dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp">
+
+        <ImageView
+            android:id="@+id/parking_fragment_paid_logo_iv"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/parking_ic_pay_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/parking_fragment_paid_payment_tv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/parking_horizontal_margin"
+            android:gravity="bottom"
+            android:paddingBottom="6dp"
+            android:text="@string/parking_payment"
+            android:textColor="#717171"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/parking_fragment_paid_amount_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/parking_fragment_paid_logo_iv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/parking_fragment_paid_amount_tv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="RM-7.00"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/parking_fragment_paid_payment_tv"
+            app:layout_constraintTop_toBottomOf="@+id/parking_fragment_paid_payment_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View style="@style/ParkingHorizontalDivideStyle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/parking_reference_number"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/parking_fragment_paid_reference_number_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="end|center_vertical"
+                android:lines="1"
+                android:text="111111"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/parking_txn_time"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/parking_fragment_paid_txn_time_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="end|center_vertical"
+                android:lines="1"
+                android:text="2020"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/parking_merchant_name"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/parking_fragment_paid_merchant_name_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="end|center_vertical"
+                android:maxLines="2"
+                android:text="WD1234"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/parking_lpr_vehicle"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/parking_fragment_paid_lpr_vehicle_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="end|center_vertical"
+                android:lines="1"
+                android:text="WD1234"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <Button
+            style="@style/ParkingThemeButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/parking_email_receipt"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>

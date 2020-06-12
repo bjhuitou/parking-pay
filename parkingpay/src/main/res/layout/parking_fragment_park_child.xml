@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:paddingBottom="8dp"
+            android:text="@string/parking_parking_list"
+            android:textColor="@android:color/black"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/parking_ic_logo" />
+
+    </LinearLayout>
+
+    <View style="@style/ParkingHorizontalDivideStyle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="174dp"
+        android:paddingStart="@dimen/parking_horizontal_margin"
+        android:paddingEnd="@dimen/parking_horizontal_margin">
+
+        <ImageView
+            android:id="@+id/parking_fragment_park_child_logo_iv"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:padding="20dp"
+            android:background="@drawable/parking_bg_logo_circle"
+            android:src="@mipmap/parking_ic_logo_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/parking_fragment_park_child_all_merchants_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/parking_fragment_park_child_all_merchants_btn"
+            style="@style/ParkingDefaultButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/parking_all_merchants"
+            app:layout_constraintBottom_toTopOf="@+id/parking_fragment_park_child_shopping_mall_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/parking_fragment_park_child_logo_iv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/parking_fragment_park_child_shopping_mall_btn"
+            style="@style/ParkingDefaultButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/parking_vertical_margin"
+            android:text="@string/parking_shopping_mall"
+            app:layout_constraintBottom_toTopOf="@+id/parking_fragment_park_child_commercial_btn"
+            app:layout_constraintEnd_toEndOf="@+id/parking_fragment_park_child_all_merchants_btn"
+            app:layout_constraintStart_toStartOf="@+id/parking_fragment_park_child_all_merchants_btn"
+            app:layout_constraintTop_toBottomOf="@+id/parking_fragment_park_child_all_merchants_btn" />
+
+        <Button
+            android:id="@+id/parking_fragment_park_child_commercial_btn"
+            style="@style/ParkingDefaultButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/parking_vertical_margin"
+            android:text="@string/parking_commercial"
+            app:layout_constraintBottom_toTopOf="@+id/parking_fragment_park_child_residential_btn"
+            app:layout_constraintEnd_toEndOf="@+id/parking_fragment_park_child_all_merchants_btn"
+            app:layout_constraintStart_toStartOf="@+id/parking_fragment_park_child_all_merchants_btn"
+            app:layout_constraintTop_toBottomOf="@+id/parking_fragment_park_child_shopping_mall_btn" />
+
+        <Button
+            android:id="@+id/parking_fragment_park_child_residential_btn"
+            style="@style/ParkingDefaultButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/parking_vertical_margin"
+            android:layout_marginBottom="8dp"
+            android:text="@string/parking_residential"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/parking_fragment_park_child_all_merchants_btn"
+            app:layout_constraintStart_toStartOf="@+id/parking_fragment_park_child_all_merchants_btn"
+            app:layout_constraintTop_toBottomOf="@+id/parking_fragment_park_child_commercial_btn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View style="@style/ParkingHorizontalDivideStyle"
+        android:layout_marginBottom="8dp"/>
+
+</LinearLayout>

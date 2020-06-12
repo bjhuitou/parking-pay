@@ -1,0 +1,48 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.itgoo.parkingpay">
+
+    <application>
+        <activity
+            android:name=".ui.main.ParkingMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ParkingDialogActivityTheme" />
+        <activity
+            android:name=".ui.vehicleimage.ParkingVehicleImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ParkingDialogActivityTheme" />
+        <activity
+            android:name=".ui.parkings.ParkingParkingsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ParkingActivityTheme" />
+        <activity
+            android:name=".ui.payconfirm.ParkingPayConfirmActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ParkingActivityTheme" />
+        <activity
+            android:name=".ui.orders.ParkingOrdersActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ParkingActivityTheme" />
+        <activity
+            android:name=".ui.orderinfo.ParkingOrderInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ParkingActivityTheme" />
+        <activity
+            android:name=".ui.contact.ParkingContactActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ParkingActivityTheme" />
+        <activity
+            android:name=".ui.init.ParkingInitActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ParkingDialogActivityTheme" />
+        <activity
+            android:name=".ui.merchants.ParkingMerchantsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ParkingActivityTheme" />
+        <activity
+            android:name=".ui.paid.ParkingPaidActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ParkingActivityTheme" />
+
+    </application>
+
+</manifest>

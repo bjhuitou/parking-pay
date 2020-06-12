@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/parking_horizontal_margin"
+        android:layout_marginEnd="@dimen/parking_horizontal_margin"
+        android:background="@drawable/parking_bg_main"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/parking_horizontal_margin"
+        android:paddingTop="@dimen/parking_vertical_margin"
+        android:paddingEnd="@dimen/parking_horizontal_margin">
+
+        <me.tabak.fragmentswitcher.FragmentSwitcher
+            android:id="@+id/parking_fragment_main_fs"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/parking_fragment_main_action_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/parking_bottom_tab_bar_height"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <ImageButton
+                android:id="@+id/parking_fragment_main_home_ib"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@mipmap/parking_tab_bar_home" />
+
+            <ImageButton
+                android:id="@+id/parking_fragment_main_park_ib"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@mipmap/parking_tab_bar_park" />
+
+            <ImageButton
+                android:id="@+id/parking_fragment_main_rfid_ib"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@mipmap/parking_tab_bar_rfid" />
+
+            <ImageButton
+                android:id="@+id/parking_fragment_main_history_ib"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@mipmap/parking_tab_bar_history" />
+
+            <ImageButton
+                android:id="@+id/parking_fragment_main_info_contact_ib"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@mipmap/parking_tab_bar_contact" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
