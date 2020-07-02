@@ -1,13 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.itgoo.parkingpay">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
         <activity
             android:name=".ui.main.ParkingMainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/ParkingDialogActivityTheme" />
-        <activity
-            android:name=".ui.vehicleimage.ParkingVehicleImageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ParkingDialogActivityTheme" />
         <activity
@@ -42,7 +45,15 @@
             android:name=".ui.paid.ParkingPaidActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ParkingActivityTheme" />
-
+        <activity
+            android:name=".ui.image.ParkingImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ParkingDialogActivityTheme" />
+        <activity
+            android:name=".ui.pay.ParkingPayActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/ParkingActivityTheme" />
     </application>
 
 </manifest>

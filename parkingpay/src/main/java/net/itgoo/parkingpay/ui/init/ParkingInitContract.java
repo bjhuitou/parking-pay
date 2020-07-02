@@ -14,7 +14,7 @@ public interface ParkingInitContract {
     }
 
     interface Presenter extends ParkingBasePresenter {
-
+        void initModel();
     }
 
     interface DataSource {

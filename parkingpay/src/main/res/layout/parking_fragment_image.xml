@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="@dimen/parking_vertical_margin"
+        android:background="@drawable/parking_bg_upload_image"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/parking_upload_image_prompt"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="20dp" />
+
+        <View
+            style="@style/ParkingHorizontalDivideStyle"
+            android:layout_marginTop="30dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/parking_fragment_image_photo_1_iv"
+                android:layout_width="130dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:background="@android:color/darker_gray"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/parking_ic_default_vehicle_image" />
+
+            <Button
+                android:id="@+id/parking_fragment_image_photo_1_btn"
+                style="@style/ParkingYesButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/parking_fragment_image_photo_1_iv"
+                android:layout_alignParentEnd="true"
+                android:text="@string/parking_image_1" />
+
+        </RelativeLayout>
+
+        <View style="@style/ParkingHorizontalDivideStyle" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/parking_fragment_image_photo_2_iv"
+                android:layout_width="130dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:background="@android:color/darker_gray"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/parking_ic_default_vehicle_image" />
+
+            <Button
+                android:id="@+id/parking_fragment_image_photo_2_btn"
+                style="@style/ParkingYesButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/parking_fragment_image_photo_2_iv"
+                android:layout_alignParentEnd="true"
+                android:text="@string/parking_image_2" />
+
+        </RelativeLayout>
+
+        <View style="@style/ParkingHorizontalDivideStyle" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/parking_fragment_image_photo_3_iv"
+                android:layout_width="130dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:background="@android:color/darker_gray"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/parking_ic_default_vehicle_image" />
+
+            <Button
+                android:id="@+id/parking_fragment_image_photo_3_btn"
+                style="@style/ParkingYesButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/parking_fragment_image_photo_3_iv"
+                android:layout_alignParentEnd="true"
+                android:text="@string/parking_image_3" />
+
+        </RelativeLayout>
+
+        <View style="@style/ParkingHorizontalDivideStyle" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/parking_vertical_margin">
+
+            <Button
+                android:id="@+id/parking_fragment_image_later_btn"
+                style="@style/ParkingYesButtonStyle"
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:text="@string/parking_maybe_later" />
+
+            <Button
+                android:id="@+id/parking_fragment_image_save_btn"
+                style="@style/ParkingYesButtonStyle"
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:text="@string/parking_save" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

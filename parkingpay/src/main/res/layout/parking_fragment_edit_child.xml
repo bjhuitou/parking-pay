@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/parking_input_vehicle"
+            android:textColor="@android:color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/parking_ic_logo" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="@string/parking_license_plate"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/parking_edit"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/parking_delete"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <View style="@style/ParkingHorizontalDivideStyle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/parking_fragment_edit_left_ib"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:src="@mipmap/parking_ic_left_arrow" />
+
+            <TextView
+                android:id="@+id/parking_fragment_edit_plate_tv"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:background="@drawable/parking_bg_empty_license_plate"
+                android:gravity="center"
+                android:text="@string/parking_empty"
+                android:textColor="@android:color/white"
+                android:textSize="14dp" />
+
+            <ImageButton
+                android:id="@+id/parking_fragment_edit_right_ib"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:src="@mipmap/parking_ic_right_arrow" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/parking_fragment_edit_edit_ib"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@mipmap/parking_ic_edit" />
+
+        <ImageButton
+            android:id="@+id/parking_fragment_edit_delete_ib"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@mipmap/parking_ic_delete" />
+
+    </LinearLayout>
+
+    <View style="@style/ParkingHorizontalDivideStyle" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+</LinearLayout>

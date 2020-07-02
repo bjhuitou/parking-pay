@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.vehicleimage.ParkingVehicleImageActivity">
+    tools:context=".ui.image.ParkingImageActivity">
 
     <FrameLayout
-        android:id="@+id/parking_activity_vehicle_image_content_fl"
+        android:id="@+id/parking_activity_image_content_fl"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

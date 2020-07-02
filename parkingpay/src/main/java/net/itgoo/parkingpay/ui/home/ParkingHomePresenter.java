@@ -26,39 +26,17 @@ public class ParkingHomePresenter implements ParkingHomeContract.Presenter {
     }
 
     @Override
-    public void openPlateEdit() {
-        mView.showPlateEdit(null);
-    }
-
-    @Override
-    public void savePlate(String plate) {
-        if (plate == null || plate.isEmpty()) {
-            return;
-        }
-
-        mView.showMainActionView(true);
-        mView.showToolView(true);
-    }
-
-    @Override
-    public void deletePlateConfirm() {
-        mView.showDeleteConfirm();
-    }
-
-    @Override
-    public void deletePlate() {
-
-    }
-
-    @Override
     public void previousPlate() {
         mView.showPlate("");
-        mView.showPayView();
     }
 
     @Override
     public void nextPlate() {
         mView.showPlate("");
-        mView.showEditView();
+    }
+
+    @Override
+    public void setPlate(String plate) {
+        mView.showPlate(plate);
     }
 }

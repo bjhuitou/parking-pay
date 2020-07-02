@@ -11,22 +11,14 @@ import net.itgoo.parkingpay.vendor.mvp.ParkingMVPLoadDataCallback;
 public interface ParkingHomeContract {
 
     interface View extends ParkingBaseView<Presenter> {
-        void showPlateEdit(String plate);
-        void showDeleteConfirm();
         void showPlate(String plate);
-        void showEditView();
-        void showPayView();
         void showMainActionView(boolean show);
-        void showToolView(boolean show);
     }
 
     interface Presenter extends ParkingBasePresenter {
-        void openPlateEdit();
-        void savePlate(String plate);
-        void deletePlateConfirm();
-        void deletePlate();
         void previousPlate();
         void nextPlate();
+        void setPlate(String plate);
     }
 
     interface DataSource {

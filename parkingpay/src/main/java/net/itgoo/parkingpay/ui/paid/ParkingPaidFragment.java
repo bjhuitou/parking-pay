@@ -1,10 +1,13 @@
 package net.itgoo.parkingpay.ui.paid;
 
 import android.os.Bundle;
+import android.view.View;
 
 import net.itgoo.parkingpay.R;
 import net.itgoo.parkingpay.vendor.widget.fragment.ParkingBaseFragment;
 import net.itgoo.titlebar.TitleBar;
+
+import hk.ids.gws.android.sclick.SClick;
 
 public class ParkingPaidFragment extends ParkingBaseFragment implements ParkingPaidContract.View {
 
@@ -56,6 +59,7 @@ public class ParkingPaidFragment extends ParkingBaseFragment implements ParkingP
 
     @Override
     protected void initUI(Bundle savedInstanceState) {
+        initViews();
         initTitleBar();
     }
 
@@ -64,7 +68,19 @@ public class ParkingPaidFragment extends ParkingBaseFragment implements ParkingP
 
     }
 
+    private void initViews() {
+        View contentView = getContentView();
+        mTitleBar = contentView.findViewById(R.id.parking_view_title_bar_ct);
+    }
+
     private void initTitleBar() {
         mTitleBar.setTitle("");
+        mTitleBar.setLeftClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!SClick.check(SClick.BUTTON_CLICK)) return;
+                getActivity().finish();
+            }
+        });
     }
 }

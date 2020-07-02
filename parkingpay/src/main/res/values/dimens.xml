@@ -5,7 +5,7 @@
     <!--Divide-->
     <dimen name="parking_horizontal_divide_height">1dp</dimen>
     <!--TabBar-->
-    <dimen name="parking_bottom_tab_bar_height">50dp</dimen>
+    <dimen name="parking_bottom_tab_bar_height">60dp</dimen>
     <!--TitleBar-->
     <dimen name="parking_title_bar_height">56dp</dimen>
 </resources>

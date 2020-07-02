@@ -38,11 +38,10 @@
 
         <ImageView
             android:id="@+id/parking_fragment_park_child_logo_iv"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:padding="20dp"
-            android:background="@drawable/parking_bg_logo_circle"
-            android:src="@mipmap/parking_ic_logo_title"
+            android:src="@mipmap/parking_ic_logo_circle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/parking_fragment_park_child_all_merchants_btn"
             app:layout_constraintStart_toStartOf="parent"

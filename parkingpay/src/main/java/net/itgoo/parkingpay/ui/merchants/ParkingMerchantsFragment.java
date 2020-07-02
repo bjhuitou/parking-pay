@@ -3,12 +3,9 @@ package net.itgoo.parkingpay.ui.merchants;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.lufficc.stateLayout.StateLayout;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
@@ -112,10 +109,10 @@ public class ParkingMerchantsFragment extends ParkingBaseFragment implements Par
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new ParkingMerchantsAdapter(R.layout.parking_item_merchants);
-        mAdapter.setOnItemClickListener(new OnItemClickListener() {
+        mAdapter = new ParkingMerchantsAdapter(getActivity());
+        mAdapter.setOnItemClickListener(new ParkingMerchantsAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+            public void onItemClick(View v, int position) {
                 if (!SClick.check(SClick.BUTTON_CLICK)) return;
 
                 mPresenter.openItem(position);
@@ -150,7 +147,7 @@ public class ParkingMerchantsFragment extends ParkingBaseFragment implements Par
 
     @Override
     public void showRefreshData(List<String> data) {
-        mAdapter.setNewData(data);
+        mAdapter.setData(data);
         mAdapter.notifyDataSetChanged();
         mSmartRefreshLayout.finishRefresh();
     }

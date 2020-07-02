@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.lufficc.stateLayout.StateLayout;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
@@ -114,10 +111,10 @@ public class ParkingOrdersFragment extends ParkingBaseFragment implements Parkin
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new ParkingOrderAdapter(R.layout.parking_item_order);
-        mAdapter.setOnItemClickListener(new OnItemClickListener() {
+        mAdapter = new ParkingOrderAdapter(getActivity());
+        mAdapter.setOnItemClickListener(new ParkingOrderAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+            public void onItemClick(View v, int position) {
                 if (!SClick.check(SClick.BUTTON_CLICK)) return;
 
                 mPresenter.openItem(position);
@@ -152,7 +149,7 @@ public class ParkingOrdersFragment extends ParkingBaseFragment implements Parkin
 
     @Override
     public void showRefreshData(List<String> data) {
-        mAdapter.setNewInstance(data);
+        mAdapter.setData(data);
         mAdapter.notifyDataSetChanged();
         mSmartRefreshLayout.finishRefresh();
     }

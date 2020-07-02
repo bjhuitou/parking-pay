@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
@@ -22,5 +23,64 @@
         android:text="@string/parking_init_prompt"
         android:textColor="@color/parking_theme_color"
         android:textSize="20dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="@dimen/parking_horizontal_margin"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="@dimen/parking_horizontal_margin">
+
+        <ImageView
+            android:id="@+id/parking_fragment_init_progress_1_iv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/parking_ic_circle_progress"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/parking_fragment_init_progress_2_iv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/parking_fragment_init_progress_2_iv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/parking_ic_circle_progress"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/parking_fragment_init_progress_3_iv"
+            app:layout_constraintStart_toEndOf="@+id/parking_fragment_init_progress_1_iv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/parking_fragment_init_progress_3_iv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/parking_ic_circle_progress"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/parking_fragment_init_progress_4_iv"
+            app:layout_constraintStart_toEndOf="@+id/parking_fragment_init_progress_2_iv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/parking_fragment_init_progress_4_iv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/parking_ic_circle_progress"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/parking_fragment_init_progress_5_iv"
+            app:layout_constraintStart_toEndOf="@+id/parking_fragment_init_progress_3_iv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/parking_fragment_init_progress_5_iv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/parking_ic_circle_progress"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/parking_fragment_init_progress_4_iv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

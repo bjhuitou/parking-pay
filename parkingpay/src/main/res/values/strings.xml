@@ -68,4 +68,10 @@
     <string name="parking_merchant_name">Merchant Name</string>
     <string name="parking_lpr_vehicle">LPR Vehicle</string>
     <string name="parking_email_receipt">Email Receipt</string>
+    <string name="parking_your_primary_vehicle">Your Primary Vehicle</string>
+    <string name="parking_upload_image_prompt">Upload your license plate image for double verification</string>
+    <string name="parking_image_1">Image 1</string>
+    <string name="parking_image_2">Image 2</string>
+    <string name="parking_image_3">Image 3</string>
+    <string name="parking_maybe_later">Maybe Later</string>
 </resources>

@@ -14,9 +14,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="@string/parking_input_vehicle"
+            android:text="@string/parking_your_primary_vehicle"
             android:textColor="@android:color/black"
-            android:textSize="24dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <ImageView
@@ -41,33 +41,12 @@
             android:textSize="18dp"
             android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/parking_fragment_home_child_menu_title_view"
+        <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/parking_edit"
-                android:textColor="@android:color/black"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/parking_delete"
-                android:textColor="@android:color/black"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+        </View>
 
     </LinearLayout>
 
@@ -111,35 +90,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/parking_fragment_home_child_menu_action_view"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2">
-
-            <ImageButton
-                android:id="@+id/parking_fragment_home_edit_ib"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:src="@mipmap/parking_ic_edit" />
-
-            <ImageButton
-                android:id="@+id/parking_fragment_home_delete_ib"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:src="@mipmap/parking_ic_delete" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/parking_fragment_home_child_pay_view"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:visibility="gone">
 
             <ImageButton
                 android:id="@+id/parking_fragment_home_pay_ib"

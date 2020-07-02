@@ -41,7 +41,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
-            android:background="#ff0000" />
+            android:src="@mipmap/parking_ic_location" />
 
         <TextView
             android:layout_width="0dp"

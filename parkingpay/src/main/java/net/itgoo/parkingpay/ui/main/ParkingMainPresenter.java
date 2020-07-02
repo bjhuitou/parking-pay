@@ -2,8 +2,14 @@ package net.itgoo.parkingpay.ui.main;
 
 import android.location.Location;
 
-import net.itgoo.parkingpay.manage.ParkingManage;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 
+import net.itgoo.parkingpay.manage.ParkingManage;
+import net.itgoo.parkingpay.rest.VolleyManager;
+
+import java.util.HashMap;
 import java.util.Map;
 
 import io.nlopez.smartlocation.OnLocationUpdatedListener;
@@ -44,6 +50,20 @@ public class ParkingMainPresenter implements ParkingMainContract.Presenter {
                     public void onLocationUpdated(Location location) {
                         ParkingManage.getInstance(mView.getContext())
                                 .setLocation(location.getLatitude(), location.getLongitude());
+                    }
+                });
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("params1", "xixi");
+        VolleyManager.sendStringRequest(Request.Method.GET,
+                "https://www.cywzpt.com/api/problem/getKeFuMobile", params,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
                     }
                 });
     }

@@ -1,40 +1,51 @@
 package net.itgoo.parkingpay.ui.main;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.fragment.app.Fragment;
-
-import com.yanzhenjie.permission.Action;
-import com.yanzhenjie.permission.AndPermission;
-import com.yanzhenjie.permission.runtime.Permission;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentTransaction;
 
 import net.itgoo.parkingpay.R;
 import net.itgoo.parkingpay.ui.contact.ParkingContactActivity;
+import net.itgoo.parkingpay.ui.edit.ParkingEditFragment;
 import net.itgoo.parkingpay.ui.home.ParkingHomeFragment;
 import net.itgoo.parkingpay.ui.orders.ParkingOrdersActivity;
 import net.itgoo.parkingpay.ui.park.ParkingParkFragment;
 import net.itgoo.parkingpay.ui.rfid.ParkingRfidFragment;
 import net.itgoo.parkingpay.vendor.widget.fragment.ParkingBaseFragment;
+import net.itgoo.parkingpay.vendor.widget.fragmentBackHandler.FragmentBackHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import hk.ids.gws.android.sclick.SClick;
-import me.tabak.fragmentswitcher.FragmentStateArrayPagerAdapter;
-import me.tabak.fragmentswitcher.FragmentSwitcher;
 
-public class ParkingMainFragment extends ParkingBaseFragment implements ParkingMainContract.View {
+import static net.itgoo.parkingpay.ui.home.ParkingHomeChildFragment.PARKING_ACTION_PLATE_NAME;
+
+public class ParkingMainFragment extends ParkingBaseFragment implements ParkingMainContract.View,
+        FragmentBackHandler {
 
     public static final String PARKING_ACTION_SHOW_MAIN_MENU = "parking_action_show_main_menu";
+    public static final String PARKING_ACTION_SHOW_PLATE_INFO = "parking_action_show_plate_info";
+    private static final int PARKING_FRAGMENT_EDIT_INDEX = 0;
+    private static final int PARKING_FRAGMENT_HOME_INDEX = 1;
+    private static final int PARKING_FRAGMENT_PARK_INDEX = 2;
+    private static final int PARKING_FRAGMENT_RFID_INDEX = 3;
+    private static final int PERMISSION_REQUEST_CODE = 1;
     private ParkingMainContract.Presenter mPresenter;
-    private FragmentSwitcher mFragmentSwitcher;
     private View mActionView;
-    private FragmentStateArrayPagerAdapter mFragmentArrayPagerAdapter;
+    private ParkingEditFragment mParkingEditFragment;
+    private ParkingHomeFragment mParkingHomeFragment;
+    private ParkingParkFragment mParkingParkFragment;
+    private ParkingRfidFragment mParkingRfidFragment;
 
     public ParkingMainFragment() {
         // Required empty public constructor
@@ -56,6 +67,7 @@ public class ParkingMainFragment extends ParkingBaseFragment implements ParkingM
         }
         IntentFilter filter = new IntentFilter();
         filter.addAction(PARKING_ACTION_SHOW_MAIN_MENU);
+        filter.addAction(PARKING_ACTION_SHOW_PLATE_INFO);
         getActivity().registerReceiver(mReceiver, filter);
     }
 
@@ -86,7 +98,7 @@ public class ParkingMainFragment extends ParkingBaseFragment implements ParkingM
     @Override
     protected void initUI(Bundle savedInstanceState) {
         initViews();
-        initFragmentSwitcher();
+        initFragments();
     }
 
     @Override
@@ -96,7 +108,6 @@ public class ParkingMainFragment extends ParkingBaseFragment implements ParkingM
 
     private void initViews() {
         View contentView = getContentView();
-        mFragmentSwitcher = contentView.findViewById(R.id.parking_fragment_main_fs);
         mActionView = contentView.findViewById(R.id.parking_fragment_main_action_view);
         contentView.findViewById(R.id.parking_fragment_main_home_ib).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,34 +141,26 @@ public class ParkingMainFragment extends ParkingBaseFragment implements ParkingM
         });
     }
 
-    private void initFragmentSwitcher() {
-        mFragmentArrayPagerAdapter = new FragmentStateArrayPagerAdapter(getFragmentManager());
-        mFragmentSwitcher.setAdapter(mFragmentArrayPagerAdapter);
-
-        List<Fragment> fragments = new ArrayList<>();
-        fragments.add(ParkingHomeFragment.newInstance());
-        fragments.add(ParkingParkFragment.newInstance());
-        fragments.add(ParkingRfidFragment.newInstance());
-        mFragmentArrayPagerAdapter.addAll(fragments);
-        mFragmentSwitcher.setCurrentItem(0);
+    private void initFragments() {
+        showFragment(PARKING_FRAGMENT_EDIT_INDEX);
     }
 
     private void onHomeAction() {
         if (!SClick.check(SClick.BUTTON_CLICK)) return;
 
-        mFragmentSwitcher.setCurrentItem(0);
+        showFragment(PARKING_FRAGMENT_HOME_INDEX);
     }
 
     private void onParkAction() {
         if (!SClick.check(SClick.BUTTON_CLICK)) return;
 
-        mFragmentSwitcher.setCurrentItem(1);
+        showFragment(PARKING_FRAGMENT_PARK_INDEX);
     }
 
     private void onRfidAction() {
         if (!SClick.check(SClick.BUTTON_CLICK)) return;
 
-        mFragmentSwitcher.setCurrentItem(2);
+        showFragment(PARKING_FRAGMENT_RFID_INDEX);
     }
 
     private void onHistoryAction() {
@@ -176,26 +179,85 @@ public class ParkingMainFragment extends ParkingBaseFragment implements ParkingM
 
     @Override
     public void showActionView(boolean show) {
-        mActionView.setVisibility(show ? View.VISIBLE : View.GONE);
+        mActionView.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
     }
 
     private void requestPermission() {
-        AndPermission.with(getActivity())
-                .runtime()
-                .permission(Permission.ACCESS_COARSE_LOCATION, Permission.ACCESS_FINE_LOCATION)
-                .onGranted(new Action<List<String>>() {
-                    @Override
-                    public void onAction(List<String> data) {
-                        mPresenter.requestLocation();
-                    }
-                })
-                .onDenied(new Action<List<String>>() {
-                    @Override
-                    public void onAction(List<String> data) {
+        String[] permissions = new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION};
+        List<String> permissionList = new ArrayList<>();
+        for (int i = 0; i < permissions.length; i++) {
+            if (ContextCompat.checkSelfPermission(getActivity(), permissions[i]) != PackageManager.PERMISSION_GRANTED) {
+                permissionList.add(permissions[i]);
+            }
+        }
+        if (permissionList.size() > 0) {
+            requestPermissions(permissionList.toArray(new String[0]), PERMISSION_REQUEST_CODE);
+        } else {
+            mPresenter.requestLocation();
+        }
+    }
 
-                    }
-                })
-                .start();
+    private void showPlateInfo(String plate) {
+        showFragment(PARKING_FRAGMENT_HOME_INDEX);
+        Intent intent = new Intent(PARKING_ACTION_PLATE_NAME);
+        intent.putExtra("plate", plate);
+        getActivity().sendBroadcast(intent);
+    }
+
+    private void showFragment(int position) {
+        FragmentTransaction beginTransaction = getFragmentManager().beginTransaction();
+        if (mParkingEditFragment != null) {
+            beginTransaction.hide(mParkingEditFragment);
+        }
+        if (mParkingHomeFragment != null) {
+            beginTransaction.hide(mParkingHomeFragment);
+        }
+        if (mParkingParkFragment != null) {
+            beginTransaction.hide(mParkingParkFragment);
+        }
+        if (mParkingRfidFragment != null) {
+            beginTransaction.hide(mParkingRfidFragment);
+        }
+
+        switch (position) {
+            case PARKING_FRAGMENT_EDIT_INDEX:
+                if (mParkingEditFragment == null) {
+                    mParkingEditFragment = new ParkingEditFragment();
+                    beginTransaction.add(R.id.parking_fragment_main_fl, mParkingEditFragment);
+                } else {
+                    beginTransaction.show(mParkingEditFragment);
+                }
+                break;
+
+            case PARKING_FRAGMENT_HOME_INDEX:
+                if (mParkingHomeFragment == null) {
+                    mParkingHomeFragment = new ParkingHomeFragment();
+                    beginTransaction.add(R.id.parking_fragment_main_fl, mParkingHomeFragment);
+                } else {
+                    beginTransaction.show(mParkingHomeFragment);
+                }
+                break;
+
+            case PARKING_FRAGMENT_PARK_INDEX:
+                if (mParkingParkFragment == null) {
+                    mParkingParkFragment = new ParkingParkFragment();
+                    beginTransaction.add(R.id.parking_fragment_main_fl, mParkingParkFragment);
+                } else {
+                    beginTransaction.show(mParkingParkFragment);
+                }
+                break;
+
+            case PARKING_FRAGMENT_RFID_INDEX:
+                if (mParkingRfidFragment == null) {
+                    mParkingRfidFragment = new ParkingRfidFragment();
+                    beginTransaction.add(R.id.parking_fragment_main_fl, mParkingRfidFragment);
+                } else {
+                    beginTransaction.show(mParkingRfidFragment);
+                }
+                break;
+        }
+        beginTransaction.commit();
     }
 
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -204,7 +266,37 @@ public class ParkingMainFragment extends ParkingBaseFragment implements ParkingM
             if (PARKING_ACTION_SHOW_MAIN_MENU.equals(intent.getAction())) {
                 boolean show = intent.getBooleanExtra("show", false);
                 showActionView(show);
+            } else if (PARKING_ACTION_SHOW_PLATE_INFO.equals(intent.getAction())) {
+                String plate = intent.getStringExtra("plate");
+                showPlateInfo(plate);
+                showActionView(true);
             }
         }
     };
+
+    @Override
+    public boolean onBackPressed() {
+        if (mParkingEditFragment.isHidden()) {
+            showFragment(PARKING_FRAGMENT_EDIT_INDEX);
+            showActionView(false);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        boolean hasPermissionDismiss = false;
+        if (PERMISSION_REQUEST_CODE == requestCode) {
+            for (int i = 0; i < grantResults.length; i++) {
+                if (grantResults[i] == -1) {
+                    hasPermissionDismiss = true;
+                }
+            }
+            if (!hasPermissionDismiss) {
+                mPresenter.requestLocation();
+            }
+        }
+    }
 }

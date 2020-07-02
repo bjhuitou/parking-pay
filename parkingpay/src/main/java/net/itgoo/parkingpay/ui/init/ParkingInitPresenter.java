@@ -1,5 +1,7 @@
 package net.itgoo.parkingpay.ui.init;
 
+import net.itgoo.parkingpay.rest.VolleyManager;
+
 import java.util.Map;
 
 /**
@@ -27,5 +29,10 @@ public class ParkingInitPresenter implements ParkingInitContract.Presenter {
     @Override
     public void stop() {
         mRepository.cancel();
+    }
+
+    @Override
+    public void initModel() {
+        VolleyManager.init(mView.getContext().getApplicationContext());
     }
 }

@@ -1,8 +1,8 @@
-package net.itgoo.parkingpay.ui.vehicleimage;
+package net.itgoo.parkingpay.ui.edit;
 
 import net.itgoo.parkingpay.vendor.mvp.ParkingMVPLoadDataCallback;
 
-public class ParkingVehicleImageDataRepository implements ParkingVehicleImageContract.DataSource {
+public class ParkingEditDataRepository implements ParkingEditContract.DataSource {
 
     @Override
     public void getData(ParkingMVPLoadDataCallback callback) {

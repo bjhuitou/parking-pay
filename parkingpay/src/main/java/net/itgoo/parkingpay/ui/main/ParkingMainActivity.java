@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import net.itgoo.parkingpay.R;
 import net.itgoo.parkingpay.vendor.mvp.ParkingMVPUtils;
+import net.itgoo.parkingpay.vendor.widget.fragmentBackHandler.BackHandlerHelper;
 
 public class ParkingMainActivity extends AppCompatActivity {
 
@@ -39,5 +40,12 @@ public class ParkingMainActivity extends AppCompatActivity {
         }
 
         new ParkingMainPresenter(null, fragment, new ParkingMainDataRepository());
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!BackHandlerHelper.handleBackPress(getSupportFragmentManager())) {
+            super.onBackPressed();
+        }
     }
 }
